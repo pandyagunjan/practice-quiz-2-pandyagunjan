@@ -1,6 +1,10 @@
 package com.zipcodewilmington.assessment2.part2;
 import java.util.Arrays;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.*;
+
 public class ArrayUtility {
     public Integer[] merge(Integer[] array1, Integer[] array2) {
 
@@ -35,17 +39,6 @@ public class ArrayUtility {
 
         System.arraycopy(storetheFirstIndex,0,storeAltered,k,index);
 
-
-//     int j=0;
-//        for (int i = index-1 ; i < array.length-index; i++) {
-//             storeAltered[j]=array[i+1];
-//             j++;
-//        }
-//        int g=0;
-//        for (int k = array.length-index ; k < array.length; k++) {
-//            storeAltered[k]=array[g];
-//            g++;
-//        }
         return storeAltered;
     }
 
@@ -54,6 +47,28 @@ public class ArrayUtility {
     }
 
     public Integer mostCommon(Integer[] array) {
-        return null;
+        Map<Integer,Integer> hp = new HashMap<Integer,Integer>();
+
+        for (int i = 0; i < array.length; i++) {
+            if(hp.containsKey(array[i]))
+            {
+              //  Integer value=array[i];
+                hp.replace((array[i]),hp.get(array[i]),hp.get(array[i])+1);
+            }
+            else
+            {
+                hp.put((array[i]),1);
+            }
+
+        }
+        int maxValueInMap=(Collections.max(hp.values()));
+        int maxValuesKey=0;
+        for (Map.Entry<Integer, Integer> entry : hp.entrySet()) {  // Iterate through hashmap
+            if (entry.getValue()==maxValueInMap) {
+                maxValuesKey= entry.getKey();     // Print the key with max value
+            }
+        }
+
+        return maxValuesKey;
     }
 }
