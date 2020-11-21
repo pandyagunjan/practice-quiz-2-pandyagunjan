@@ -43,7 +43,20 @@ public class ArrayUtility {
     }
 
     public Integer countOccurrence(Integer[] array1, Integer[] array2, Integer valueToEvaluate) {
-        return null;
+
+        Integer count = 0;
+        for (int i = 0; i < array1.length; i++) {
+            if (array1[i].equals(valueToEvaluate)){
+                count++;
+            }
+        }
+        for (int j = 0; j < array2.length; j++) {
+            if (array2[j].equals(valueToEvaluate)){
+                count++;
+            }
+        }
+        return count;
+
     }
 
     public Integer mostCommon(Integer[] array) {
