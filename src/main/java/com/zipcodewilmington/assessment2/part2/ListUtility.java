@@ -36,10 +36,35 @@ public class ListUtility {
             }
           }
         return sb.toString();
-    }
 
+//        StringBuilder string = new StringBuilder();
+//        for (Integer e: needThis) {
+//            if(needThis.indexOf(e) != 0) {
+//                string.append(", ").append(e);
+//            } else {
+//                string.append(e);
+//            }
+////            StringBuilder joinedNums = new StringBuilder();
+////            joinedNums.append(list);
+////            return joinedNums.toString().replace("[", "").replace("]", "");
+//        }
+       // return String.valueOf(string);
+
+    }
     public Integer mostCommon() {
-        return null;
+        Map<Integer, Integer> count = new HashMap<Integer, Integer>();
+        for (Integer i : list){
+            if (count.containsKey(i))
+                count.put(i, count.get(i) + 1);
+            else
+                count.put(i, 0);
+        }
+        Map.Entry<Integer, Integer> mostCommon = null;
+        for(Map.Entry<Integer, Integer> entry : count.entrySet()){
+            if (mostCommon == null || entry.getValue() > mostCommon.getValue())
+                mostCommon = entry;
+        }
+        return mostCommon.getKey();
     }
 
     public Boolean contains(Integer valueToAdd) {
